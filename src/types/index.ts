@@ -7,6 +7,7 @@ export type { Product } from "./product";
 export type { ProductType } from "./product-type";
 export type { TrustBadge } from "./trust-badge";
 export type { PersonalizationStep } from "./personalization-step";
+export type { Occasion } from "./occasion";
 export type {
   LinkItem,
   FooterLinkSection,

@@ -50,9 +50,8 @@ export function Bestsellers() {
       <div className="mt-8 flex justify-center">
         <Button
           asChild
-          variant="outline"
-          size="lg"
-          className="rounded-none border-2 border-foreground bg-transparent px-8 py-6 text-sm font-light tracking-wider uppercase hover:bg-foreground hover:text-background transition-all duration-300"
+          variant="luxury"
+          size="xl"
         >
           <Link href="/products/bestsellers">
             View All Bestsellers

@@ -6,4 +6,5 @@ export { ProductTypes } from "./product-types";
 export { Bestsellers } from "./bestsellers";
 export { TrustBadges } from "./trust-badges";
 export { PersonalizationSteps } from "./personalization-steps";
+export { Occasions } from "./occasions";
 

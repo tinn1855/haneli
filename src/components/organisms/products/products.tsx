@@ -23,12 +23,7 @@ export function Products() {
 
       {/* View All Button */}
       <div className="mt-12 flex justify-center">
-        <Button
-          asChild
-          variant="outline"
-          size="lg"
-          className="rounded-none border-2 border-foreground bg-transparent px-8 py-6 text-sm font-light tracking-wider uppercase hover:bg-foreground hover:text-background transition-all duration-300"
-        >
+        <Button asChild variant="luxury" size="xl">
           <Link href="/products">
             View All Products
             <ArrowRight className="ml-2 size-4" />
@@ -38,4 +33,3 @@ export function Products() {
     </Section>
   );
 }
-

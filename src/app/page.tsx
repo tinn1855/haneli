@@ -11,6 +11,7 @@ import {
   Bestsellers,
   TrustBadges,
   PersonalizationSteps,
+  Occasions,
 } from "@/components/organisms";
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       <Products />
       <Bestsellers />
       <PersonalizationSteps />
+      <Occasions />
       <ProductTypes />
       <TrustBadges />
       <Feedback />

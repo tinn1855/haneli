@@ -30,14 +30,8 @@ export function Newsletter() {
               placeholder="Email"
               className="flex-1 rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-3 text-center focus-visible:ring-0 focus-visible:border-foreground transition-colors sm:text-left"
             />
-            <Button
-              type="submit"
-              variant="outline"
-              size="lg"
-              className="rounded-none border-2 border-foreground bg-transparent px-8 py-6 text-sm font-light tracking-wider uppercase hover:bg-foreground hover:text-background transition-all duration-300"
-            >
+            <Button variant="luxury" size="lg">
               Subscribe
-              <ArrowRight className="ml-2 size-4" />
             </Button>
           </form>
         </div>
@@ -45,4 +39,3 @@ export function Newsletter() {
     </section>
   );
 }
-

@@ -6,4 +6,5 @@ export { ProductCard } from "./product-card";
 export { ProductTypeCard } from "./product-type-card";
 export { TrustBadgeCard } from "./trust-badge-card";
 export { StepCard } from "./step-card";
+export { OccasionCard } from "./occasion-card";
 
