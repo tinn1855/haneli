@@ -1,92 +1,30 @@
 import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  CreditCard,
-  Shield,
-  Truck,
-  Headphones,
-  LucideIcon,
-} from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 
-interface LinkItem {
-  label: string;
-  href: string;
-}
-
-interface FooterLinkSection {
-  title: string;
-  links: LinkItem[];
-}
-
-interface FeatureItem {
-  icon: LucideIcon;
-  text: string;
-}
-
-const footerSections: FooterLinkSection[] = [
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blog", href: "/blog" },
-    ],
-  },
-  {
-    title: "Customer Service",
-    links: [
-      { label: "Help Center", href: "/help" },
-      { label: "Shipping Info", href: "/shipping" },
-      { label: "Returns", href: "/returns" },
-      { label: "Size Guide", href: "/size-guide" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Cookie Policy", href: "/cookies" },
-      { label: "Accessibility", href: "/accessibility" },
-    ],
-  },
-];
-
-const features: FeatureItem[] = [
-  { icon: Truck, text: "Free shipping on orders over $50" },
-  { icon: Shield, text: "Secure payment processing" },
-  { icon: Headphones, text: "24/7 customer support" },
-];
-
-const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-];
-
-const paymentMethods = [
-  { icon: CreditCard, label: "Visa" },
-  { icon: CreditCard, label: "Mastercard" },
-  { icon: CreditCard, label: "PayPal" },
-  { icon: CreditCard, label: "Apple Pay" },
-];
+import {
+  footerSections,
+  features,
+  socialLinks,
+  paymentMethods,
+} from "@/data/footer";
+import type { FooterLinkSection, FeatureItem } from "@/types/footer";
 
 function FooterLinkSection({ title, links }: FooterLinkSection) {
   return (
     <div>
-      <Heading variant="h6" className="mb-4 text-sm font-semibold" as="h3">
+      <Heading
+        variant="h6"
+        className="mb-6 text-xs font-light tracking-[0.15em] uppercase"
+        as="h3"
+      >
         {title}
       </Heading>
-      <ul className="space-y-3">
+      <ul className="space-y-4">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-light tracking-wide text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -99,7 +37,7 @@ function FooterLinkSection({ title, links }: FooterLinkSection) {
 
 function FeatureItem({ icon: Icon, text }: FeatureItem) {
   return (
-    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <div className="flex items-center gap-3 text-sm font-light text-muted-foreground">
       <Icon className="size-4" />
       <span>{text}</span>
     </div>
@@ -108,24 +46,24 @@ function FeatureItem({ icon: Icon, text }: FeatureItem) {
 
 export function Footer() {
   return (
-    <footer className="border-t">
-      <section className="container py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
+    <footer className="border-t border-border/50 bg-background">
+      <section className="container py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
+            <Link href="/" className="inline-block mb-6">
               <Heading
-                variant="h4"
-                className="font-bold tracking-tight text-primary"
+                variant="h3"
+                className="text-2xl font-light tracking-[0.15em] uppercase"
               >
                 Hanelia
               </Heading>
             </Link>
-            <p className="mb-6 text-sm text-muted-foreground max-w-sm">
+            <p className="mb-10 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
               Your trusted destination for quality products. We bring you the
               best shopping experience with exceptional service and premium
               selections.
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               {features.map((feature, index) => (
                 <FeatureItem key={index} {...feature} />
               ))}
@@ -138,15 +76,17 @@ export function Footer() {
         </div>
       </section>
 
-      <section className="border-t">
-        <div className="container py-6">
-          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-            <p className="text-sm text-muted-foreground text-center md:text-left">
+      <section className="border-t border-border/50">
+        <div className="container py-8">
+          <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+            <p className="text-xs font-light tracking-wide text-muted-foreground text-center md:text-left">
               © {new Date().getFullYear()} Hanelia. All rights reserved.
             </p>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Follow us:</span>
-              <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
+              <span className="text-xs font-light tracking-wide text-muted-foreground">
+                Follow Us
+              </span>
+              <div className="flex items-center gap-4">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
@@ -156,25 +96,27 @@ export function Footer() {
                       aria-label={social.label}
                       className="text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      <Icon className="size-5" />
+                      <Icon className="size-4" />
                     </Link>
                   );
                 })}
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">We accept:</span>
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-light tracking-wide text-muted-foreground">
+                We accept
+              </span>
               <div className="flex items-center gap-2">
                 {paymentMethods.map((method, index) => {
                   const Icon = method.icon;
                   return (
                     <div
                       key={index}
-                      className="flex items-center justify-center rounded border bg-background p-1.5"
+                      className="flex items-center justify-center border border-border/50 bg-background p-2"
                       title={method.label}
                     >
-                      <Icon className="size-4 text-muted-foreground" />
+                      <Icon className="size-3.5 text-muted-foreground" />
                     </div>
                   );
                 })}

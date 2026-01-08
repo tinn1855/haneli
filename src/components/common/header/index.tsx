@@ -95,16 +95,16 @@ function UserDropdown() {
 
 export function Header() {
   return (
-    <header className="w-full border-b bg-background">
-      <section className="border-b py-2 bg-muted/40">
-        <div className="container flex items-center justify-between text-sm">
+    <header className="w-full border-b border-border/50 bg-background">
+      <section className="border-b border-border/30 py-3">
+        <div className="container flex items-center justify-between text-xs">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="size-4" />
-            <address className="not-italic">
-              Store Location: Lincoln- 344, Illinois, Chicago, USA
+            <MapPin className="size-3.5" />
+            <address className="not-italic font-light">
+              Lincoln- 344, Illinois, Chicago, USA
             </address>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <LanguageSelector defaultValue="en" className="text-xs" />
             <CurrencySelector defaultValue="usd" className="text-xs" />
           </div>
@@ -112,32 +112,32 @@ export function Header() {
       </section>
 
       <section className="container">
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Heading
-                variant="h4"
-                className="font-bold tracking-tight text-primary"
+                variant="h3"
+                className="text-2xl font-light tracking-[0.15em] uppercase"
               >
                 Hanelia
               </Heading>
             </Link>
           </div>
 
-          <div className="relative flex-1 max-w-lg">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <div className="relative flex-1 max-w-md mx-12">
+            <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search products..."
-              className="w-full pl-9 pr-4"
+              placeholder="Search"
+              className="w-full border-0 border-b border-border/50 rounded-none bg-transparent pl-10 pr-4 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
             />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="h-10 w-10"
               aria-label="Wishlist"
             >
               <Heart className="size-5" />
@@ -145,11 +145,11 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative h-10 w-10"
               aria-label="Shopping cart"
             >
               <ShoppingCart className="size-5" />
-              <span className="absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
                 0
               </span>
             </Button>

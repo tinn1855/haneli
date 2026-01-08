@@ -5,29 +5,8 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface NavItem {
-  label: string;
-  href: string;
-  children?: NavItem[];
-}
-
-const navigationItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  {
-    label: "Products",
-    href: "/products",
-    children: [
-      { label: "All Products", href: "/products" },
-      { label: "New Arrivals", href: "/products/new" },
-      { label: "Best Sellers", href: "/products/bestsellers" },
-      { label: "Sale", href: "/products/sale" },
-    ],
-  },
-  { label: "About Us", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Policy", href: "/policy" },
-  { label: "Contact", href: "/contact" },
-];
+import { navigationItems } from "@/data/navigation";
+import type { NavItem } from "@/types/navigation";
 
 function NavDropdown({ item }: { item: NavItem }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +35,7 @@ function NavDropdown({ item }: { item: NavItem }) {
     return (
       <Link
         href={item.href}
-        className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+        className="text-sm font-light tracking-wide text-foreground transition-colors hover:text-foreground/70"
       >
         {item.label}
       </Link>
@@ -68,22 +47,25 @@ function NavDropdown({ item }: { item: NavItem }) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary"
+        className="flex items-center gap-1.5 text-sm font-light tracking-wide text-foreground transition-colors hover:text-foreground/70"
       >
         {item.label}
         <ChevronDown
-          className={cn("size-4 transition-transform", isOpen && "rotate-180")}
+          className={cn(
+            "size-3.5 transition-transform duration-300",
+            isOpen && "rotate-180"
+          )}
         />
       </button>
       {isOpen && (
-        <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-md border bg-popover p-1 shadow-md">
+        <div className="absolute left-1/2 top-full z-50 mt-4 w-56 -translate-x-1/2 border border-border/50 bg-background p-2 shadow-lg">
           <nav className="flex flex-col">
             {item.children.map((child) => (
               <Link
                 key={child.href}
                 href={child.href}
                 onClick={() => setIsOpen(false)}
-                className="rounded-sm px-3 py-2 text-sm text-popover-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="px-4 py-3 text-sm font-light tracking-wide text-foreground transition-colors hover:bg-muted/50"
               >
                 {child.label}
               </Link>
@@ -97,9 +79,9 @@ function NavDropdown({ item }: { item: NavItem }) {
 
 export function Navigation() {
   return (
-    <section className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <section className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex justify-center">
-        <nav className="flex items-center gap-4 lg:gap-10 py-4">
+        <nav className="flex items-center gap-8 lg:gap-12 py-5">
           {navigationItems.map((item) => (
             <NavDropdown key={item.href} item={item} />
           ))}
