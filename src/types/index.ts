@@ -4,6 +4,7 @@ export type { HeroSlide } from "./hero";
 export type { NavItem } from "./navigation";
 export type { FAQItem } from "./faq";
 export type { Product } from "./product";
+export type { ProductType } from "./product-type";
 export type {
   LinkItem,
   FooterLinkSection,

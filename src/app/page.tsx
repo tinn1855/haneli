@@ -4,7 +4,7 @@ import { Navigation } from "@/components/common/navigation";
 import { Newsletter } from "@/components/common/newsletter";
 import { Hero } from "@/components/sections/hero";
 import { FAQ } from "@/components/sections/faq";
-import { Feedback, Products } from "@/components/organisms";
+import { Feedback, Products, ProductTypes } from "@/components/organisms";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Products />
+      <ProductTypes />
       <Feedback />
       <FAQ />
       <Newsletter />
