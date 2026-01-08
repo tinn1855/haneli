@@ -5,6 +5,7 @@ export { navigationItems } from "./navigation";
 export { faqItems } from "./faq";
 export { featuredProducts } from "./product";
 export { popularProductTypes } from "./product-type";
+export { bestsellers } from "./bestsellers";
 export {
   footerSections,
   features,
