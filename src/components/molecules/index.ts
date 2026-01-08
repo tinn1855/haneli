@@ -1,4 +1,3 @@
-// Molecules - Combinations of UI components
 export { SectionSubtitle } from "./section-subtitle";
 export { SectionHeader } from "./section-header";
 export { FeedbackCard } from "./feedback-card";
@@ -7,4 +6,11 @@ export { ProductTypeCard } from "./product-type-card";
 export { TrustBadgeCard } from "./trust-badge-card";
 export { StepCard } from "./step-card";
 export { OccasionCard } from "./occasion-card";
+export { BaseCard } from "./base-card";
+export { ImageCard } from "./image-card";
+export { CardContent } from "./card-content";
+export { CardDivider } from "./card-divider";
+export { CTAButton } from "./cta-button";
+export { Grid } from "./grid";
+export { CarouselSection } from "./carousel-section";
 

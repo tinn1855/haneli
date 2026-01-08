@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,8 +7,8 @@ import { SectionSubtitle } from "@/components/molecules";
 
 export function Newsletter() {
   return (
-    <section className="border-t border-border/50 bg-background">
-      <div className="container py-16 md:py-20">
+    <section className="border-t border-border/50 bg-background py-12 md:py-16">
+      <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-4">
             <SectionSubtitle>Stay Connected</SectionSubtitle>

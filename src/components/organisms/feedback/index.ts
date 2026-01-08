@@ -1,2 +1,0 @@
-export { Feedback } from "./feedback";
-

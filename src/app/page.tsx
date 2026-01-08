@@ -4,15 +4,13 @@ import { Navigation } from "@/components/common/navigation";
 import { Newsletter } from "@/components/common/newsletter";
 import { Hero } from "@/components/sections/hero";
 import { FAQ } from "@/components/sections/faq";
-import {
-  Feedback,
-  Products,
-  ProductTypes,
-  Bestsellers,
-  TrustBadges,
-  PersonalizationSteps,
-  Occasions,
-} from "@/components/organisms";
+import { Products } from "@/components/sections/products";
+import { Bestsellers } from "@/components/sections/bestsellers";
+import { PersonalizationSteps } from "@/components/sections/personalization-steps";
+import { Occasions } from "@/components/sections/occasions";
+import { ProductTypes } from "@/components/sections/product-types";
+import { TrustBadges } from "@/components/sections/trust-badges";
+import { Feedback } from "@/components/sections/feedback";
 
 export default function Home() {
   return (
@@ -20,11 +18,11 @@ export default function Home() {
       <Header />
       <Navigation />
       <Hero />
+      <ProductTypes />
       <Products />
       <Bestsellers />
       <PersonalizationSteps />
       <Occasions />
-      <ProductTypes />
       <TrustBadges />
       <Feedback />
       <FAQ />

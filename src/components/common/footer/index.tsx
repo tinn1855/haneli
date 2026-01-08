@@ -47,7 +47,7 @@ function FeatureItem({ icon: Icon, text }: FeatureItem) {
 export function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background">
-      <section className="container py-12 md:py-16">
+      <section className="container py-12 md:py-14">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
