@@ -5,6 +5,8 @@ export type { NavItem } from "./navigation";
 export type { FAQItem } from "./faq";
 export type { Product } from "./product";
 export type { ProductType } from "./product-type";
+export type { TrustBadge } from "./trust-badge";
+export type { PersonalizationStep } from "./personalization-step";
 export type {
   LinkItem,
   FooterLinkSection,
