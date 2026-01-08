@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, ShoppingBag, Sparkles, Palette, Star } from "lucide-react";
+import {
+  ChevronRight,
+  ShoppingBag,
+  Sparkles,
+  Palette,
+  Star,
+} from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -78,7 +84,7 @@ export function Hero() {
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-0">
+        <CarouselContent>
           {heroSlides.map((slide) => (
             <CarouselItem key={slide.id} className="pl-0">
               <div className="relative h-[500px] md:h-[600px] lg:h-[700px] w-full">
@@ -92,7 +98,7 @@ export function Hero() {
                     priority={slide.id === 1}
                     sizes="100vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40 z-10" />
+                  <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/70 to-background/40 z-10" />
                 </div>
 
                 {/* Content */}
@@ -156,4 +162,3 @@ export function Hero() {
     </section>
   );
 }
-
