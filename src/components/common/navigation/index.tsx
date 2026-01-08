@@ -97,7 +97,7 @@ function NavDropdown({ item }: { item: NavItem }) {
 
 export function Navigation() {
   return (
-    <section className="border-b">
+    <section className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex justify-center">
         <nav className="flex items-center gap-4 lg:gap-10 py-4">
           {navigationItems.map((item) => (
