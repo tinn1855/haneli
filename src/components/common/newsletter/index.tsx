@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,15 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { SectionSubtitle } from "@/components/molecules";
-
-const newsletterSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address"),
-});
-
-type NewsletterFormValues = z.infer<typeof newsletterSchema>;
+import { newsletterSchema, type NewsletterFormValues } from "@/lib/schemas";
 
 export function Newsletter() {
   const form = useForm<NewsletterFormValues>({
