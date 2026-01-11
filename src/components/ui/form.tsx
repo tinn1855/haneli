@@ -13,7 +13,7 @@ import {
 } from "react-hook-form";
 
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import { Label, type LabelProps } from "@/components/ui/label";
 
 const Form = FormProvider;
 
@@ -88,13 +88,15 @@ FormItem.displayName = "FormItem";
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+    Pick<LabelProps, "variant">
+>(({ className, variant, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
   return (
     <Label
       ref={ref}
+      variant={variant}
       className={cn(error && "text-destructive", className)}
       htmlFor={formItemId}
       {...props}

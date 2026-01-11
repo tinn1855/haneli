@@ -23,12 +23,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       >
         {product.badge && (
           <div className="absolute left-4 top-4">
-            <Badge
-              variant="outline"
-              className="rounded-none border border-border/50 bg-background/90 px-3 py-1 text-xs font-light tracking-wide backdrop-blur-sm"
-            >
-              {product.badge}
-            </Badge>
+            <Badge variant="product">{product.badge}</Badge>
           </div>
         )}
       </ImageCard>

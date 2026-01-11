@@ -4,199 +4,14 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { format } from "date-fns";
 import { Heading } from "@/components/ui/heading";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { DatePicker } from "@/components/ui/date-picker";
+import { Form, FormField } from "@/components/ui/form";
+import { FormFieldInput } from "@/components/molecules/form-field-input";
+import { FormFieldSelect } from "@/components/molecules/form-field-select";
+import { FormFieldDatePicker } from "@/components/molecules/form-field-date-picker";
 import { signUpSchema, type SignUpFormValues } from "@/lib/schemas";
-
-const sexOptions = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "other", label: "Other" },
-] as const;
-
-function getMaxDate(): Date {
-  return new Date(new Date().setFullYear(new Date().getFullYear() - 13));
-}
-
-function handleDateOfBirthSelect(
-  selectedDate: Date | undefined,
-  fieldOnChange: (value: string) => void
-) {
-  if (selectedDate) {
-    fieldOnChange(format(selectedDate, "yyyy-MM-dd"));
-  } else {
-    fieldOnChange("");
-  }
-}
-
-function renderDateOfBirthField({
-  field,
-}: {
-  field: {
-    value: string;
-    onChange: (value: string) => void;
-  };
-}) {
-  const date = field.value ? new Date(field.value) : undefined;
-  const maxDate = getMaxDate();
-
-  return (
-    <FormItem>
-      <FormLabel className="text-sm font-light">Date of Birth</FormLabel>
-      <FormControl>
-        <DatePicker
-          date={date}
-          onSelect={(selectedDate) =>
-            handleDateOfBirthSelect(selectedDate, field.onChange)
-          }
-          maxDate={maxDate}
-          fromYear={1900}
-          toYear={new Date().getFullYear()}
-          placeholder="Select date"
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  );
-}
-
-function renderFirstNameField({
-  field,
-}: {
-  field: {
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur: () => void;
-    name: string;
-  };
-}) {
-  return (
-    <FormItem>
-      <FormLabel className="text-sm font-light">First Name</FormLabel>
-      <FormControl>
-        <Input
-          type="text"
-          placeholder="John"
-          className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-          {...field}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  );
-}
-
-function renderLastNameField({
-  field,
-}: {
-  field: {
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur: () => void;
-    name: string;
-  };
-}) {
-  return (
-    <FormItem>
-      <FormLabel className="text-sm font-light">Last Name</FormLabel>
-      <FormControl>
-        <Input
-          type="text"
-          placeholder="Doe"
-          className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-          {...field}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  );
-}
-
-function renderEmailField({
-  field,
-}: {
-  field: {
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur: () => void;
-    name: string;
-  };
-}) {
-  return (
-    <FormItem>
-      <FormLabel className="text-sm font-light">Email Address</FormLabel>
-      <FormControl>
-        <Input
-          type="email"
-          placeholder="your.email@example.com"
-          className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-          {...field}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  );
-}
-
-function renderSexOption(option: { value: string; label: string }) {
-  return (
-    <SelectItem key={option.value} value={option.value}>
-      {option.label}
-    </SelectItem>
-  );
-}
-
-function handleSexChange(
-  value: string,
-  fieldOnChange: (value: string) => void
-) {
-  fieldOnChange(value);
-}
-
-function renderSexField({
-  field,
-}: {
-  field: {
-    value: string | undefined;
-    onChange: (value: string) => void;
-  };
-}) {
-  return (
-    <FormItem>
-      <FormLabel className="text-sm font-light">Sex</FormLabel>
-      <Select
-        onValueChange={(value) => handleSexChange(value, field.onChange)}
-        defaultValue={field.value}
-      >
-        <FormControl>
-          <SelectTrigger className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus:ring-0 focus:border-foreground transition-colors w-full">
-            <SelectValue placeholder="Select your sex" />
-          </SelectTrigger>
-        </FormControl>
-        <SelectContent>{sexOptions.map(renderSexOption)}</SelectContent>
-      </Select>
-      <FormMessage />
-    </FormItem>
-  );
-}
+import { SEX_OPTIONS, getMaxDate, getMinBirthYear } from "@/lib/constants/form";
 
 export default function SignUpPage() {
   const form = useForm<SignUpFormValues>({
@@ -217,15 +32,9 @@ export default function SignUpPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md space-y-8">
-        {/* Header */}
         <div className="text-center space-y-2">
           <Link href="/" className="inline-block">
-            <Heading
-              variant="h1"
-              className="text-3xl font-light tracking-[0.15em] uppercase"
-            >
-              Hanelia
-            </Heading>
+            <Heading variant="h1">Hanelia</Heading>
           </Link>
           <p className="text-sm font-light text-muted-foreground">
             Create your account
@@ -238,13 +47,25 @@ export default function SignUpPage() {
               <FormField
                 control={form.control}
                 name="firstName"
-                render={renderFirstNameField}
+                render={({ field }) => (
+                  <FormFieldInput
+                    label="First Name"
+                    placeholder="John"
+                    field={field}
+                  />
+                )}
               />
 
               <FormField
                 control={form.control}
                 name="lastName"
-                render={renderLastNameField}
+                render={({ field }) => (
+                  <FormFieldInput
+                    label="Last Name"
+                    placeholder="Doe"
+                    field={field}
+                  />
+                )}
               />
             </div>
 
@@ -252,20 +73,43 @@ export default function SignUpPage() {
               <FormField
                 control={form.control}
                 name="dateOfBirth"
-                render={renderDateOfBirthField}
+                render={({ field }) => (
+                  <FormFieldDatePicker
+                    label="Date of Birth"
+                    placeholder="Select date"
+                    field={field}
+                    maxDate={getMaxDate()}
+                    fromYear={getMinBirthYear()}
+                    toYear={new Date().getFullYear()}
+                  />
+                )}
               />
 
               <FormField
                 control={form.control}
                 name="sex"
-                render={renderSexField}
+                render={({ field }) => (
+                  <FormFieldSelect
+                    label="Sex"
+                    placeholder="Select your sex"
+                    options={SEX_OPTIONS}
+                    field={field}
+                  />
+                )}
               />
             </div>
 
             <FormField
               control={form.control}
               name="email"
-              render={renderEmailField}
+              render={({ field }) => (
+                <FormFieldInput
+                  label="Email Address"
+                  type="email"
+                  placeholder="your.email@example.com"
+                  field={field}
+                />
+              )}
             />
 
             <div className="rounded-md border border-border/50 bg-muted/30 p-4">
@@ -277,7 +121,6 @@ export default function SignUpPage() {
             </div>
 
             <Button
-              type="submit"
               variant="luxury"
               size="lg"
               className="w-full"

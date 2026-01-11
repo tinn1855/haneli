@@ -3,7 +3,6 @@
 import * as React from "react";
 import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -64,15 +63,13 @@ export function DatePicker({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="ghost"
+          type="button"
+          variant="underline"
           data-empty={!date}
-          className={cn(
-            "w-full justify-between font-normal rounded-none border-0 border-b border-border/50 bg-transparent  hover:bg-transparent hover:border-foreground focus-visible:ring-0 focus-visible:border-foreground transition-colors data-[empty=true]:text-muted-foreground",
-            className
-          )}
+          className={className}
         >
           <span>{date ? format(date, "PPP") : placeholder}</span>
-          <ChevronDownIcon className=" opacity-50" />
+          <ChevronDownIcon className="opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto overflow-hidden p-0" align="start">
