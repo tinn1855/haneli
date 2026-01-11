@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -43,20 +44,46 @@ export function Hero() {
 
                 {/* Content */}
                 <div className="container relative z-20 h-full flex items-center justify-center">
-                  <div className="max-w-4xl text-center space-y-8">
-                    <p className="text-sm font-light tracking-[0.2em] uppercase text-foreground/80">
-                      {slide.subtitle}
-                    </p>
-                    <Heading
-                      variant="display"
-                      className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none"
+                  <motion.div
+                    className="max-w-4xl text-center space-y-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <motion.p
+                      className="text-sm font-light tracking-[0.2em] uppercase text-foreground/80"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                      {slide.title}
-                    </Heading>
-                    <p className="mx-auto max-w-2xl text-lg md:text-xl font-light leading-relaxed text-foreground/90">
+                      {slide.subtitle}
+                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                    >
+                      <Heading
+                        variant="display"
+                        className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none"
+                      >
+                        {slide.title}
+                      </Heading>
+                    </motion.div>
+                    <motion.p
+                      className="mx-auto max-w-2xl text-lg md:text-xl font-light leading-relaxed text-foreground/90"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                    >
                       {slide.description}
-                    </p>
-                    <div className="pt-4">
+                    </motion.p>
+                    <motion.div
+                      className="pt-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                    >
                       <Button
                         asChild
                         variant="luxury"
@@ -67,8 +94,8 @@ export function Hero() {
                           <ArrowRight className="ml-2 size-4" />
                         </Link>
                       </Button>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </CarouselItem>
