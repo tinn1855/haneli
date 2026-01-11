@@ -121,6 +121,31 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Link underline animation from left to right - apply only to links in header and footer */
+  /* Exclude links with no-underline class, links that are buttons (data-slot="button"), and button-like elements */
+  :is(header, footer, nav)
+    a:not([class*="no-underline"]):not([data-slot="button"]):not(
+      [role="button"]
+    ) {
+    @apply relative inline-block pb-1;
+  }
+
+  :is(header, footer, nav)
+    a:not([class*="no-underline"]):not([data-slot="button"]):not(
+      [role="button"]
+    )::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px bg-current transition-all duration-300 ease-out;
+    width: 0;
+  }
+
+  :is(header, footer, nav)
+    a:not([class*="no-underline"]):not([data-slot="button"]):not(
+      [role="button"]
+    ):hover::after {
+    width: 100%;
+  }
 }
 
 @layer utilities {

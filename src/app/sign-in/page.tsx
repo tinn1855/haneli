@@ -83,7 +83,7 @@ export default function SignInPage() {
                     </FormLabel>
                     <Link
                       href="/forgot-password"
-                      className="text-xs font-light text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+                      className="text-xs font-light text-muted-foreground hover:text-foreground transition-colors"
                     >
                       Forgot password?
                     </Link>
@@ -119,7 +119,7 @@ export default function SignInPage() {
             Don&apos;t have an account?{" "}
             <Link
               href="/sign-up"
-              className="font-medium text-foreground underline-offset-4 hover:underline transition-colors"
+              className="font-medium text-foreground transition-colors"
             >
               Sign up
             </Link>
