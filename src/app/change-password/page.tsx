@@ -4,17 +4,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  FormDescription,
-} from "@/components/ui/form";
+import { Form, FormField, FormItem, FormDescription } from "@/components/ui/form";
+import { FormFieldInput } from "@/components/molecules/form-field-input";
 import {
   changePasswordSchema,
   type ChangePasswordFormValues,
@@ -65,21 +57,15 @@ export default function ChangePasswordPage() {
               name="currentPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-light">
-                    Current Password
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your temporary password"
-                      className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-                      {...field}
-                    />
-                  </FormControl>
+                  <FormFieldInput
+                    label="Current Password"
+                    type="password"
+                    placeholder="Enter your temporary password"
+                    field={field}
+                  />
                   <FormDescription className="text-xs">
                     Enter the temporary password sent to your email
                   </FormDescription>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -89,21 +75,15 @@ export default function ChangePasswordPage() {
               name="newPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-light">
-                    New Password
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your new password"
-                      className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-                      {...field}
-                    />
-                  </FormControl>
+                  <FormFieldInput
+                    label="New Password"
+                    type="password"
+                    placeholder="Enter your new password"
+                    field={field}
+                  />
                   <FormDescription className="text-xs">
                     Must be at least 6 characters
                   </FormDescription>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -112,20 +92,12 @@ export default function ChangePasswordPage() {
               control={form.control}
               name="confirmPassword"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-light">
-                    Confirm New Password
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Confirm your new password"
-                      className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+                <FormFieldInput
+                  label="Confirm New Password"
+                  type="password"
+                  placeholder="Confirm your new password"
+                  field={field}
+                />
               )}
             />
 
