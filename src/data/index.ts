@@ -15,4 +15,8 @@ export {
   socialLinks,
   paymentMethods,
 } from "./footer";
-
+export {
+  productFeatures,
+  productTrustBadges,
+  productDetails,
+} from "./product-detail";

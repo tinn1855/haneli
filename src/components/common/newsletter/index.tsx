@@ -59,8 +59,9 @@ export function Newsletter() {
                     <FormControl>
                       <Input
                         type="email"
+                        variant="underline"
                         placeholder="Email"
-                        className="rounded-none border-0 border-b border-border/50 bg-transparent px-0 py-3 text-center focus-visible:ring-0 focus-visible:border-foreground transition-colors sm:text-left"
+                        className="py-3 text-center sm:text-left"
                         {...field}
                       />
                     </FormControl>

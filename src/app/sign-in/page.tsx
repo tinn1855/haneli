@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
 import { FormFieldInput } from "@/components/molecules/form-field-input";
+import { Label } from "@/components/ui/label";
 import { signInSchema, type SignInFormValues } from "@/lib/schemas";
 
 export default function SignInPage() {
@@ -56,9 +57,9 @@ export default function SignInPage() {
               render={({ field }) => (
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <label htmlFor="password" className="text-sm font-light">
+                    <Label htmlFor="password" variant="form">
                       Password
-                    </label>
+                    </Label>
                     <Link
                       href="/forgot-password"
                       className="text-xs font-light text-muted-foreground hover:text-foreground transition-colors"
