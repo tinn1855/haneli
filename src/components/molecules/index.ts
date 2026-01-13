@@ -17,3 +17,11 @@ export { FormFieldInput } from "./form-field-input";
 export { FormFieldSelect } from "./form-field-select";
 export { FormFieldDatePicker } from "./form-field-date-picker";
 
+// Product Detail Components
+export { ProductImageGallery } from "./product-image-gallery";
+export { ProductPrice } from "./product-price";
+export { ProductRating } from "./product-rating";
+export { QuantitySelector } from "./quantity-selector";
+export { TrustBadge } from "./trust-badge";
+export { FeatureCard } from "./feature-card";
+export { ProductActions } from "./product-actions";
