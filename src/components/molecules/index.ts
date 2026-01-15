@@ -16,6 +16,7 @@ export { CarouselSection } from "./carousel-section";
 export { FormFieldInput } from "./form-field-input";
 export { FormFieldSelect } from "./form-field-select";
 export { FormFieldDatePicker } from "./form-field-date-picker";
+export { FormFieldTextarea } from "./form-field-textarea";
 
 // Product Detail Components
 export { ProductImageGallery } from "./product-image-gallery";

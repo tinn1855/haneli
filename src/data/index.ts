@@ -20,3 +20,4 @@ export {
   productTrustBadges,
   productDetails,
 } from "./product-detail";
+export { contactInfo } from "./contact";

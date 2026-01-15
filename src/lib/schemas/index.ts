@@ -2,3 +2,5 @@
 export * from "./auth";
 
 export * from "./newsletter";
+
+export * from "./contact";

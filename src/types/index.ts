@@ -15,4 +15,5 @@ export type {
   SocialLink,
   PaymentMethod,
 } from "./footer";
+export type { ContactInfo } from "./contact";
 
