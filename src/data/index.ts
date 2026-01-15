@@ -21,3 +21,4 @@ export {
   productDetails,
 } from "./product-detail";
 export { contactInfo } from "./contact";
+export { policies } from "./policy";

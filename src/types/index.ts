@@ -16,4 +16,5 @@ export type {
   PaymentMethod,
 } from "./footer";
 export type { ContactInfo } from "./contact";
+export type { Policy, PolicySection } from "./policy";
 
