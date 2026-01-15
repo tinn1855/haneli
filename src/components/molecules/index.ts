@@ -25,3 +25,7 @@ export { QuantitySelector } from "./quantity-selector";
 export { TrustBadge } from "./trust-badge";
 export { FeatureCard } from "./feature-card";
 export { ProductActions } from "./product-actions";
+
+// Blog Components
+export { BlogCard } from "./blog-card";
+export { BlogContent } from "./blog-content";
