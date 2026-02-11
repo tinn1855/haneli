@@ -8,7 +8,7 @@ import { aboutStats } from "@/data/about";
 
 export function AboutStats() {
   return (
-    <Section className="border-t border-border/50 bg-background">
+    <Section spacing="spacious" className="border-t border-border/50 bg-background">
       <Grid cols={{ default: 2, md: 4 }} gap="md">
         {aboutStats.map((stat, index) => (
           <ScrollAnimation

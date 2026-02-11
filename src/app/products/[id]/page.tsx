@@ -25,6 +25,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ToastContainer } from "@/components/ui/toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -41,7 +43,10 @@ import {
   productTrustBadges,
   productDetails,
 } from "@/data";
-import { Check } from "lucide-react";
+import { useCart } from "@/hooks/use-cart";
+import { useWishlist } from "@/hooks/use-wishlist";
+import { useToast } from "@/hooks/use-toast";
+import { Check, Info } from "lucide-react";
 
 // Combine all products
 const allProducts = [...featuredProducts, ...bestsellers].filter(
@@ -57,7 +62,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const product = allProducts.find((p) => p.id === id);
 
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [personalizationText, setPersonalizationText] = useState("");
+
+  const { addItem } = useCart();
+  const { toggle: toggleWishlist, isInWishlist, isMounted: wishlistMounted } = useWishlist();
+  const { toasts, removeToast, success } = useToast();
+
+  const isWishlisted = wishlistMounted && product ? isInWishlist(product.id) : false;
 
   // Get related products (same category, excluding current)
   const relatedProducts = useMemo(() => {
@@ -85,11 +96,21 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   ];
 
   const handleAddToCart = () => {
-    console.log("Add to cart:", product.id, quantity);
+    if (!product) return;
+
+    const personalization = personalizationText.trim()
+      ? { text: personalizationText.trim() }
+      : undefined;
+
+    addItem(product, quantity, personalization);
+    
+    success(
+      `${quantity} ${quantity === 1 ? "item" : "items"} added to cart!`
+    );
   };
 
   const handleToggleWishlist = () => {
-    setIsWishlisted(!isWishlisted);
+    if (product) toggleWishlist(product);
   };
 
   const handleShare = () => {
@@ -243,10 +264,22 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   maxLength={20}
                   className="max-w-md"
                   variant="underline"
+                  value={personalizationText}
+                  onChange={(e) => setPersonalizationText(e.target.value)}
                 />
-                <p className="text-xs text-muted-foreground">
-                  Add your personal message or initials
-                </p>
+                {personalizationText.length > 0 && (
+                  <Alert>
+                    <Info className="size-4" />
+                    <AlertDescription>
+                      Your personalization will be engraved on this item
+                    </AlertDescription>
+                  </Alert>
+                )}
+                {personalizationText.length === 0 && (
+                  <p className="text-xs text-muted-foreground">
+                    Add your personal message or initials
+                  </p>
+                )}
               </div>
 
               {/* Quantity Selector */}
@@ -334,6 +367,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
       <Newsletter />
       <Footer />
+
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </main>
   );
 }

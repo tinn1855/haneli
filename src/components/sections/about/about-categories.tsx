@@ -8,7 +8,7 @@ import { productCategories } from "@/data/about";
 
 export function AboutCategories() {
   return (
-    <Section className="border-t border-border/50 bg-muted/20">
+    <Section spacing="spacious" className="border-t border-border/50 bg-muted/20">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="Product Categories"

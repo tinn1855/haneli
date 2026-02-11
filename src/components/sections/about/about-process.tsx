@@ -8,7 +8,7 @@ import { processSteps } from "@/data/about";
 
 export function AboutProcess() {
   return (
-    <Section className="bg-background">
+    <Section spacing="compact" className="bg-background">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="How It Works"

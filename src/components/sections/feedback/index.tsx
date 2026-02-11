@@ -7,7 +7,7 @@ import { feedbacks } from "@/data/feedback";
 
 export function Feedback() {
   return (
-    <Section className="bg-background">
+    <Section spacing="compact" className="bg-background">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="Testimonials"

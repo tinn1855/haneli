@@ -14,6 +14,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useCart } from "@/hooks/use-cart";
+import { useWishlist } from "@/hooks/use-wishlist";
 
 function UserDropdown() {
   const [open, setOpen] = useState(false);
@@ -94,6 +96,12 @@ function UserDropdown() {
 }
 
 export function Header() {
+  const { getTotalItems, isMounted: cartMounted } = useCart();
+  const { getCount: getWishlistCount, isMounted: wishlistMounted } = useWishlist();
+  const isMounted = cartMounted && wishlistMounted;
+  const cartItemsCount = isMounted ? getTotalItems() : 0;
+  const wishlistCount = isMounted ? getWishlistCount() : 0;
+
   return (
     <header className="w-full border-b border-border/50 bg-background">
       <section className="border-b border-border/30 py-3">
@@ -137,21 +145,34 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-10 w-10"
+              className="relative h-10 w-10"
               aria-label="Wishlist"
+              asChild
             >
-              <Heart className="size-5" />
+              <Link href="/wishlist">
+                <Heart className="size-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
+                    {wishlistCount > 99 ? "99+" : wishlistCount}
+                  </span>
+                )}
+              </Link>
             </Button>
             <Button
               variant="ghost"
               size="icon"
               className="relative h-10 w-10"
               aria-label="Shopping cart"
+              asChild
             >
-              <ShoppingCart className="size-5" />
-              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
-                0
-              </span>
+              <Link href="/cart">
+                <ShoppingCart className="size-5" />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
+                    {cartItemsCount > 99 ? "99+" : cartItemsCount}
+                  </span>
+                )}
+              </Link>
             </Button>
             <UserDropdown />
           </div>

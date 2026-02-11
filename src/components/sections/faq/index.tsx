@@ -13,7 +13,7 @@ import { faqItems } from "@/data/faq";
 
 export function FAQ() {
   return (
-    <Section>
+    <Section spacing="normal">
       <div className="mx-auto max-w-4xl">
         <ScrollAnimation direction="up" delay={0.1}>
           <SectionHeader

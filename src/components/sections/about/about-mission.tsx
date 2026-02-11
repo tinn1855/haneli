@@ -9,7 +9,7 @@ import { Target, Eye } from "lucide-react";
 
 export function AboutMission() {
   return (
-    <Section className="bg-muted/20">
+    <Section spacing="spacious" className="bg-muted/20">
       <Grid cols={{ default: 1, md: 2 }} gap="md">
         <ScrollAnimation direction="up" delay={0.1}>
           <Card className="rounded-none border border-border/50 bg-background p-8 md:p-10 lg:p-12 transition-all duration-500 hover:border-foreground/50 h-full">

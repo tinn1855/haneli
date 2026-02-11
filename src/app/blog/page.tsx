@@ -102,7 +102,7 @@ export default function BlogPage() {
       />
 
       {showFeatured && (
-        <Section className="py-16 md:py-24">
+        <Section spacing="spacious">
           <div className="container mx-auto px-4">
             <SectionHeader
               title="Featured Articles"
@@ -115,9 +115,8 @@ export default function BlogPage() {
 
       <Section
         id="latest-articles"
-        className={
-          showFeatured ? "py-10 md:py-14 bg-muted/10" : "py-16 md:py-24"
-        }
+        spacing={showFeatured ? "compact" : "spacious"}
+        className={showFeatured ? "bg-muted/10" : ""}
       >
         <div className="container mx-auto px-4">
           <SectionHeader

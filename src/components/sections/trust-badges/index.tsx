@@ -7,7 +7,7 @@ import { trustBadges } from "@/data/trust-badge";
 
 export function TrustBadges() {
   return (
-    <Section className="border-t border-border/50 bg-muted/20">
+    <Section spacing="normal" className="border-t border-border/50 bg-muted/20">
       <Grid cols={{ default: 2, md: 3, lg: 6 }} gap="md">
         {trustBadges.map((trustBadge, index) => (
           <ScrollAnimation

@@ -12,7 +12,7 @@ import { featuredProducts } from "@/data/product";
 
 export function Products() {
   return (
-    <Section className="bg-background">
+    <Section spacing="compact" className="bg-background">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="Our Collection"

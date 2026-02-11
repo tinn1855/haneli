@@ -17,4 +17,3 @@ export const TYPOGRAPHY = {
   price: "text-lg font-medium tracking-wide text-foreground",
   priceOriginal: "text-sm font-light text-muted-foreground line-through",
 } as const;
-

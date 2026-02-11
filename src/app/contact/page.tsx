@@ -1,6 +1,6 @@
 "use client";
 
-import { Send } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { Header } from "@/components/common/header";
 import { Navigation } from "@/components/common/navigation";
 import { Footer } from "@/components/common/footer";
@@ -12,18 +12,19 @@ import { Card } from "@/components/ui/card";
 import { Form, FormField } from "@/components/ui/form";
 import { FormFieldInput } from "@/components/molecules/form-field-input";
 import { FormFieldTextarea } from "@/components/molecules/form-field-textarea";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { contactInfo } from "@/data/contact";
 import { useContactForm } from "@/hooks/use-contact-form";
 
 export default function ContactPage() {
-  const { form, onSubmit } = useContactForm();
+  const { form, onSubmit, isSuccess } = useContactForm();
 
   return (
     <main>
       <Header />
       <Navigation />
-      <Section className="py-16 md:py-24">
+      <Section spacing="spacious">
         <div className="mx-auto max-w-6xl">
           <ScrollAnimation direction="up" delay={0.1}>
             <SectionHeader
@@ -48,6 +49,15 @@ export default function ContactPage() {
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
+                    {isSuccess && (
+                      <Alert>
+                        <CheckCircle2 className="size-4" />
+                        <AlertDescription>
+                          Thank you for your message! We'll get back to you as soon as possible.
+                        </AlertDescription>
+                      </Alert>
+                    )}
+
                     <FormField
                       control={form.control}
                       name="name"

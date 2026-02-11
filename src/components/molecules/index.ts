@@ -30,3 +30,10 @@ export { ProductActions } from "./product-actions";
 // Blog Components
 export { BlogCard } from "./blog-card";
 export { BlogContent } from "./blog-content";
+
+// Cart Components
+export { CartItem } from "./cart-item";
+export { CartSummary } from "./cart-summary";
+
+// Wishlist Components
+export { WishlistCard } from "./wishlist-card";

@@ -7,7 +7,7 @@ import { personalizationSteps } from "@/data/personalization-step";
 
 export function PersonalizationSteps() {
   return (
-    <Section className="bg-background">
+    <Section spacing="compact" className="bg-background">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="How It Works"

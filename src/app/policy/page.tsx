@@ -16,7 +16,7 @@ export default function PolicyPage() {
     <main>
       <Header />
       <Navigation />
-      <Section className="py-16 md:py-24">
+      <Section spacing="spacious">
         <div className="mx-auto max-w-4xl">
           <ScrollAnimation direction="up" delay={0.1}>
             <SectionHeader

@@ -7,7 +7,7 @@ import { occasions } from "@/data/occasion";
 
 export function Occasions() {
   return (
-    <Section className="bg-background">
+    <Section spacing="compact" className="bg-background">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="Gift Ideas"

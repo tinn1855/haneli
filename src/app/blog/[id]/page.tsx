@@ -96,14 +96,14 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
         </div>
       </section>
 
-      <Section className="py-16 md:py-24">
+      <Section spacing="spacious">
         <div className="container mx-auto px-4">
           <BlogContent post={post} />
         </div>
       </Section>
 
       {relatedPosts.length > 0 && (
-        <Section className="py-16 md:py-24 bg-muted/10">
+        <Section spacing="spacious" className="bg-muted/10">
           <div className="container mx-auto px-4">
             <SectionHeader
               title="Related Articles"

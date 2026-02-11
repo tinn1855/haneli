@@ -17,4 +17,6 @@ export type {
 } from "./footer";
 export type { ContactInfo } from "./contact";
 export type { Policy, PolicySection } from "./policy";
+export type { CartItem, CartSummary } from "./cart";
+export type { WishlistItem } from "./wishlist";
 

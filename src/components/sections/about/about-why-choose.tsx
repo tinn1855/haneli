@@ -8,7 +8,7 @@ import { whyChooseUs } from "@/data/about";
 
 export function AboutWhyChoose() {
   return (
-    <Section className="bg-muted/20">
+    <Section spacing="spacious" className="bg-muted/20">
       <ScrollAnimation direction="up" delay={0.1}>
         <SectionHeader
           subtitle="Why Choose Us"
