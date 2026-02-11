@@ -37,3 +37,5 @@ export { CartSummary } from "./cart-summary";
 
 // Wishlist Components
 export { WishlistCard } from "./wishlist-card";
+export { WishlistItem } from "./wishlist-item";
+export { WishlistSummary } from "./wishlist-summary";

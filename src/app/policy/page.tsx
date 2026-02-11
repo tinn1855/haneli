@@ -28,12 +28,12 @@ export default function PolicyPage() {
 
           <ScrollAnimation direction="up" delay={0.2}>
             <Tabs defaultValue={policies[0]?.id} className="mt-12">
-              <TabsList className="mb-8 w-full justify-start rounded-none border-b border-border/50 bg-transparent p-0">
+              <TabsList variant="underline" className="mb-8">
                 {policies.map((policy) => (
                   <TabsTrigger
                     key={policy.id}
                     value={policy.id}
-                    className="rounded-none border-b-2 border-transparent px-6 py-4 text-sm font-light tracking-wide data-[state=active]:border-foreground data-[state=active]:bg-transparent"
+                    variant="underline"
                   >
                     {policy.title}
                   </TabsTrigger>
