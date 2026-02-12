@@ -18,7 +18,6 @@ export { FormFieldSelect } from "./form-field-select";
 export { FormFieldDatePicker } from "./form-field-date-picker";
 export { FormFieldTextarea } from "./form-field-textarea";
 
-// Product Detail Components
 export { ProductImageGallery } from "./product-image-gallery";
 export { ProductPrice } from "./product-price";
 export { ProductRating } from "./product-rating";
@@ -27,19 +26,15 @@ export { TrustBadge } from "./trust-badge";
 export { FeatureCard } from "./feature-card";
 export { ProductActions } from "./product-actions";
 
-// Blog Components
 export { BlogCard } from "./blog-card";
 export { BlogContent } from "./blog-content";
 
-// Cart Components
 export { CartItem } from "./cart-item";
 export { CartSummary } from "./cart-summary";
 
-// Checkout Components
 export { CheckoutShippingOption } from "./checkout-shipping-option";
 export { CheckoutOrderSummaryItem } from "./checkout-order-summary-item";
 
-// Wishlist Components
 export { WishlistCard } from "./wishlist-card";
 export { WishlistItem } from "./wishlist-item";
 export { WishlistSummary } from "./wishlist-summary";

@@ -145,14 +145,14 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative h-10 w-10"
+              className="relative h-10 w-10 transition-colors duration-200"
               aria-label="Wishlist"
               asChild
             >
-              <Link href="/wishlist">
-                <Heart className="size-5" />
+              <Link href="/wishlist" className="transition-opacity duration-200 hover:opacity-80">
+                <Heart className="size-5 transition-transform duration-200" />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
+                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
                     {wishlistCount > 99 ? "99+" : wishlistCount}
                   </span>
                 )}
@@ -161,14 +161,14 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative h-10 w-10"
+              className="relative h-10 w-10 transition-colors duration-200"
               aria-label="Shopping cart"
               asChild
             >
-              <Link href="/cart">
-                <ShoppingCart className="size-5" />
+              <Link href="/cart" className="transition-opacity duration-200 hover:opacity-80">
+                <ShoppingCart className="size-5 transition-transform duration-200" />
                 {cartItemsCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background">
+                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
                     {cartItemsCount > 99 ? "99+" : cartItemsCount}
                   </span>
                 )}

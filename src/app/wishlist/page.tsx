@@ -62,6 +62,7 @@ export default function WishlistPage() {
   const handleAddAllToCart = () => {
     if (items.length === 0) return;
     items.forEach((product) => addItem(product, 1));
+    clear();
     success("Added all wishlist items to cart!");
   };
 

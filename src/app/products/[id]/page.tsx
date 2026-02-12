@@ -25,7 +25,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ToastContainer } from "@/components/ui/toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Breadcrumb,
@@ -66,7 +65,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
   const { addItem } = useCart();
   const { toggle: toggleWishlist, isInWishlist, isMounted: wishlistMounted } = useWishlist();
-  const { toasts, removeToast, success } = useToast();
+  const { success } = useToast();
 
   const isWishlisted = wishlistMounted && product ? isInWishlist(product.id) : false;
 
@@ -367,9 +366,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
       <Newsletter />
       <Footer />
-
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </main>
   );
 }

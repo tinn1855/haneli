@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, CheckCircle2, AlertCircle, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
 export type ToastType = "success" | "error" | "info";
+
+const TOAST_EXIT_DURATION = 350;
 
 interface ToastProps {
   message: string;
@@ -15,18 +17,35 @@ interface ToastProps {
 }
 
 export function Toast({ message, type = "success", duration = 3000, onClose }: ToastProps) {
-  const [isVisible, setIsVisible] = useState(true);
+  const [entered, setEntered] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
+  // Enter: after mount transition in from right
   useEffect(() => {
-    if (duration > 0) {
-      const timer = setTimeout(() => {
-        setIsVisible(false);
-        setTimeout(() => onClose?.(), 300); // Wait for animation
-      }, duration);
+    const frame = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
-      return () => clearTimeout(timer);
-    }
-  }, [duration, onClose]);
+  // Auto-close after duration
+  useEffect(() => {
+    if (duration <= 0) return;
+    const timer = setTimeout(() => setIsExiting(true), duration);
+    return () => clearTimeout(timer);
+  }, [duration]);
+
+  // Exit: after animation call onClose (ref so parent re-renders don't reset the timer)
+  useEffect(() => {
+    if (!isExiting) return;
+    const timer = setTimeout(() => onCloseRef.current?.(), TOAST_EXIT_DURATION);
+    return () => clearTimeout(timer);
+  }, [isExiting]);
+
+  const handleClose = () => {
+    if (isExiting) return;
+    setIsExiting(true);
+  };
 
   const icons = {
     success: CheckCircle2,
@@ -42,15 +61,16 @@ export function Toast({ message, type = "success", duration = 3000, onClose }: T
 
   const Icon = icons[type];
 
-  if (!isVisible) return null;
-
   return (
     <div
       className={cn(
-        "fixed bottom-4 right-4 z-50 flex items-center gap-3 rounded-md border p-4 shadow-lg transition-all duration-300",
+        "flex items-center gap-3 rounded-md border p-4 shadow-lg transition-all duration-300 ease-out",
         styles[type],
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+        entered && !isExiting
+          ? "translate-x-0 opacity-100"
+          : "translate-x-full opacity-0"
       )}
+      style={{ transitionDuration: isExiting ? `${TOAST_EXIT_DURATION}ms` : "300ms" }}
       role="alert"
     >
       <Icon className="size-5 shrink-0" />
@@ -58,11 +78,8 @@ export function Toast({ message, type = "success", duration = 3000, onClose }: T
       <Button
         variant="ghost"
         size="icon"
-        className="h-6 w-6 shrink-0 hover:bg-transparent"
-        onClick={() => {
-          setIsVisible(false);
-          setTimeout(() => onClose?.(), 300);
-        }}
+        className="h-6 w-6 shrink-0 hover:bg-transparent transition-opacity duration-200 hover:opacity-70"
+        onClick={handleClose}
       >
         <X className="size-4" />
       </Button>
@@ -77,7 +94,10 @@ interface ToastContainerProps {
 
 export function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
   return (
-    <>
+    <div
+      className="fixed bottom-4 right-4 z-50 flex flex-col gap-3 max-w-[min(calc(100vw-2rem),24rem)]"
+      aria-live="polite"
+    >
       {toasts.map((toast) => (
         <Toast
           key={toast.id}
@@ -86,6 +106,6 @@ export function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
           onClose={() => onRemove(toast.id)}
         />
       ))}
-    </>
+    </div>
   );
 }
