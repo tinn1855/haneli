@@ -22,3 +22,9 @@ export {
 } from "./product-detail";
 export { contactInfo } from "./contact";
 export { policies } from "./policy";
+export {
+  countryOptions,
+  shippingOptions,
+  getCheckoutBreadcrumbItems,
+  checkoutFormDefaultValues,
+} from "./checkout";

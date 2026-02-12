@@ -35,6 +35,10 @@ export { BlogContent } from "./blog-content";
 export { CartItem } from "./cart-item";
 export { CartSummary } from "./cart-summary";
 
+// Checkout Components
+export { CheckoutShippingOption } from "./checkout-shipping-option";
+export { CheckoutOrderSummaryItem } from "./checkout-order-summary-item";
+
 // Wishlist Components
 export { WishlistCard } from "./wishlist-card";
 export { WishlistItem } from "./wishlist-item";

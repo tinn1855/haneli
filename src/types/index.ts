@@ -19,4 +19,9 @@ export type { ContactInfo } from "./contact";
 export type { Policy, PolicySection } from "./policy";
 export type { CartItem, CartSummary } from "./cart";
 export type { WishlistItem } from "./wishlist";
+export type {
+  CheckoutBreadcrumbItem,
+  CountryOption,
+  ShippingOption,
+} from "./checkout";
 
