@@ -57,6 +57,7 @@ function Button({
 
   return (
     <Comp
+      {...(asChild ? { asChild: true } : {})}
       data-slot="button"
       data-variant={variant}
       data-size={size}
