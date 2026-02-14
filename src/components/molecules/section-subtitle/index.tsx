@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { Subtitle } from "@/components/ui/subtitle";
 
 interface SectionSubtitleProps {
   children: React.ReactNode;
@@ -10,14 +10,9 @@ export function SectionSubtitle({
   className,
 }: SectionSubtitleProps) {
   return (
-    <p
-      className={cn(
-        "text-xs font-light tracking-[0.2em] uppercase text-muted-foreground",
-        className
-      )}
-    >
+    <Subtitle variant="default" className={className}>
       {children}
-    </p>
+    </Subtitle>
   );
 }
 

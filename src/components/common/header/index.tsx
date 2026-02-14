@@ -97,28 +97,14 @@ function UserDropdown() {
 
 export function Header() {
   const { getTotalItems, isMounted: cartMounted } = useCart();
-  const { getCount: getWishlistCount, isMounted: wishlistMounted } = useWishlist();
+  const { getCount: getWishlistCount, isMounted: wishlistMounted } =
+    useWishlist();
   const isMounted = cartMounted && wishlistMounted;
   const cartItemsCount = isMounted ? getTotalItems() : 0;
   const wishlistCount = isMounted ? getWishlistCount() : 0;
 
   return (
     <header className="w-full border-b border-border/50 bg-background">
-      <section className="border-b border-border/30 py-3">
-        <div className="container flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="size-3.5" />
-            <address className="not-italic font-light">
-              Lincoln- 344, Illinois, Chicago, USA
-            </address>
-          </div>
-          <div className="flex items-center gap-4">
-            <LanguageSelector defaultValue="en" className="text-xs" />
-            <CurrencySelector defaultValue="usd" className="text-xs" />
-          </div>
-        </div>
-      </section>
-
       <section className="container">
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
@@ -149,7 +135,10 @@ export function Header() {
               aria-label="Wishlist"
               asChild
             >
-              <Link href="/wishlist" className="transition-opacity duration-200 hover:opacity-80">
+              <Link
+                href="/wishlist"
+                className="transition-opacity duration-200 hover:opacity-80"
+              >
                 <Heart className="size-5 transition-transform duration-200" />
                 {wishlistCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
@@ -165,7 +154,10 @@ export function Header() {
               aria-label="Shopping cart"
               asChild
             >
-              <Link href="/cart" className="transition-opacity duration-200 hover:opacity-80">
+              <Link
+                href="/cart"
+                className="transition-opacity duration-200 hover:opacity-80"
+              >
                 <ShoppingCart className="size-5 transition-transform duration-200" />
                 {cartItemsCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/heading";
+import { Subtitle } from "@/components/ui/subtitle";
 import { aboutHero } from "@/data/about";
 
 export function AboutHero() {
@@ -14,14 +15,13 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <motion.p
-            className="text-sm font-light tracking-[0.2em] uppercase text-foreground/80"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            {aboutHero.subtitle}
-          </motion.p>
+            <Subtitle variant="light">{aboutHero.subtitle}</Subtitle>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
