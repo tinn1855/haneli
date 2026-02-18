@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { AppSidebar } from "@/components/admin/app-sidebar";
+import { AdminProductsProvider } from "@/contexts/admin-products-context";
 
 export default function AdminLayout({
   children,
@@ -15,6 +16,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
+    <AdminProductsProvider>
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
@@ -31,5 +33,6 @@ export default function AdminLayout({
         <div className="flex flex-1 flex-col p-4 md:p-6">{children}</div>
       </SidebarInset>
     </SidebarProvider>
+    </AdminProductsProvider>
   );
 }
