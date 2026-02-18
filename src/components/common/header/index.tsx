@@ -55,11 +55,13 @@ function UserDropdown() {
 
   if (isLoggedIn) {
     return (
-      <Button variant="ghost" size="icon" aria-label="User account" asChild>
-        <Link href="/account">
-          <User className="size-5" />
-        </Link>
-      </Button>
+      <Link
+        href="/account"
+        aria-label="User account"
+        className="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+      >
+        <User className="size-5" />
+      </Link>
     );
   }
 
@@ -128,44 +130,30 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative h-10 w-10 transition-colors duration-200"
+            <Link
+              href="/wishlist"
               aria-label="Wishlist"
-              asChild
+              className="inline-flex size-10 relative items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground transition-opacity duration-200 hover:opacity-80"
             >
-              <Link
-                href="/wishlist"
-                className="transition-opacity duration-200 hover:opacity-80"
-              >
-                <Heart className="size-5 transition-transform duration-200" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
-                    {wishlistCount > 99 ? "99+" : wishlistCount}
-                  </span>
-                )}
-              </Link>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative h-10 w-10 transition-colors duration-200"
+              <Heart className="size-5 transition-transform duration-200" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
+                  {wishlistCount > 99 ? "99+" : wishlistCount}
+                </span>
+              )}
+            </Link>
+            <Link
+              href="/cart"
               aria-label="Shopping cart"
-              asChild
+              className="inline-flex size-10 relative items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground transition-opacity duration-200 hover:opacity-80"
             >
-              <Link
-                href="/cart"
-                className="transition-opacity duration-200 hover:opacity-80"
-              >
-                <ShoppingCart className="size-5 transition-transform duration-200" />
-                {cartItemsCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
-                    {cartItemsCount > 99 ? "99+" : cartItemsCount}
-                  </span>
-                )}
-              </Link>
-            </Button>
+              <ShoppingCart className="size-5 transition-transform duration-200" />
+              {cartItemsCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[10px] font-light text-background animate-in fade-in-0 zoom-in-95 duration-300">
+                  {cartItemsCount > 99 ? "99+" : cartItemsCount}
+                </span>
+              )}
+            </Link>
             <UserDropdown />
           </div>
         </div>

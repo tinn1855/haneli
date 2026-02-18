@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { type ComponentProps } from "react";
 import {
   LayoutDashboard,
   Package,
@@ -20,16 +19,10 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-
-const SlotLink = React.forwardRef<
-  HTMLAnchorElement,
-  ComponentProps<typeof Link> & { asChild?: boolean }
->(({ asChild: _asChild, ...props }, ref) => <Link ref={ref} {...props} />);
-SlotLink.displayName = "SlotLink";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { title: "Dashboard", url: "/admin", icon: LayoutDashboard },
@@ -42,6 +35,9 @@ const navFooter = [
   { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
+const sidebarLinkStyles =
+  "peer/menu-button flex h-8 w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:p-2 group-data-[collapsible=icon]:justify-center";
+
 export function AppSidebar() {
   const pathname = usePathname();
 
@@ -50,18 +46,20 @@ export function AppSidebar() {
       <SidebarHeader className="border-b border-sidebar-border">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <SlotLink href="/admin">
-                <span className="flex items-center gap-2 font-semibold">
-                  <span className="flex size-8 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
-                    H
-                  </span>
-                  <span className="group-data-[collapsible=icon]:hidden">
-                    Haneli Admin
-                  </span>
-                </span>
-              </SlotLink>
-            </SidebarMenuButton>
+            <Link
+              href="/admin"
+              className={cn(
+                sidebarLinkStyles,
+                "h-12 font-semibold group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:p-2"
+              )}
+            >
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
+                H
+              </span>
+              <span className="group-data-[collapsible=icon]:hidden">
+                Haneli Admin
+              </span>
+            </Link>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -75,16 +73,18 @@ export function AppSidebar() {
                 const isActive = pathname === item.url;
                 return (
                   <SidebarMenuItem key={item.url}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={isActive}
-                      tooltip={item.title}
+                    <Link
+                      href={item.url}
+                      className={cn(
+                        sidebarLinkStyles,
+                        isActive &&
+                          "bg-sidebar-accent font-medium text-sidebar-accent-foreground"
+                      )}
+                      title={item.title}
                     >
-                      <SlotLink href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </SlotLink>
-                    </SidebarMenuButton>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuItem>
                 );
               })}
@@ -99,16 +99,18 @@ export function AppSidebar() {
             const isActive = pathname === item.url;
             return (
               <SidebarMenuItem key={item.url}>
-                <SidebarMenuButton
-                  asChild
-                  isActive={isActive}
-                  tooltip={item.title}
+                <Link
+                  href={item.url}
+                  className={cn(
+                    sidebarLinkStyles,
+                    isActive &&
+                      "bg-sidebar-accent font-medium text-sidebar-accent-foreground"
+                  )}
+                  title={item.title}
                 >
-                  <SlotLink href={item.url}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SlotLink>
-                </SidebarMenuButton>
+                  <item.icon />
+                  <span>{item.title}</span>
+                </Link>
               </SidebarMenuItem>
             );
           })}
