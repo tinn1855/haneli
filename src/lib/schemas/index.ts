@@ -6,3 +6,5 @@ export * from "./newsletter";
 export * from "./contact";
 
 export * from "./checkout";
+
+export * from "./customer";
