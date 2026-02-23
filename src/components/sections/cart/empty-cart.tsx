@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { ShoppingBag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,10 +29,10 @@ export function EmptyCart() {
       </EmptyHeader>
       <EmptyContent>
         <Button variant="luxury" size="lg" asChild>
-          <Link href="/products">
+          <SafeLink href="/products">
             Start Shopping
             <ArrowRight className="ml-2 size-4" />
-          </Link>
+          </SafeLink>
         </Button>
       </EmptyContent>
     </Empty>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { ShoppingCart, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -89,7 +89,7 @@ export function WishlistSummary({
       )}
 
       <Button variant="outline" className="mt-3 w-full" asChild>
-        <Link href="/products">Continue shopping</Link>
+        <SafeLink href="/products">Continue shopping</SafeLink>
       </Button>
 
       <p className="mt-4 text-xs font-light leading-relaxed text-muted-foreground">

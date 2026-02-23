@@ -11,7 +11,12 @@ import { FormFieldInput } from "@/components/molecules/form-field-input";
 import { FormFieldSelect } from "@/components/molecules/form-field-select";
 import { FormFieldDatePicker } from "@/components/molecules/form-field-date-picker";
 import { signUpSchema, type SignUpFormValues } from "@/lib/schemas";
-import { SEX_OPTIONS, getMaxDate, getMinBirthYear } from "@/lib/constants/form";
+import {
+  SEX_OPTIONS,
+  getMaxDate,
+  getMinBirthYear,
+  CURRENT_YEAR,
+} from "@/lib/constants/form";
 
 export default function SignUpPage() {
   const form = useForm<SignUpFormValues>({
@@ -80,7 +85,7 @@ export default function SignUpPage() {
                     field={field}
                     maxDate={getMaxDate()}
                     fromYear={getMinBirthYear()}
-                    toYear={new Date().getFullYear()}
+                    toYear={CURRENT_YEAR}
                   />
                 )}
               />

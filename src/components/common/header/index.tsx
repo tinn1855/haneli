@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { Heart, MapPin, Search, ShoppingCart, User } from "lucide-react";
 import { LanguageSelector } from "../language-select";
 import { CurrencySelector } from "../currency-select";
@@ -86,10 +87,10 @@ function UserDropdown() {
           onMouseLeave={handleMouseLeave}
         >
           <DropdownMenuItem asChild>
-            <Link href="/sign-in">Sign In</Link>
+            <SafeLink href="/sign-in">Sign In</SafeLink>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/sign-up">Sign Up</Link>
+            <SafeLink href="/sign-up">Sign Up</SafeLink>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

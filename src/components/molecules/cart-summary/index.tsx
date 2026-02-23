@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -143,15 +143,15 @@ export function CartSummary({
 
       {/* Checkout Button */}
       <Button variant="luxury" size="lg" className="w-full" asChild>
-        <Link href={checkoutUrl}>
+        <SafeLink href={checkoutUrl}>
           Proceed to Checkout
           <ArrowRight className="ml-2 size-4" />
-        </Link>
+        </SafeLink>
       </Button>
 
       {/* Continue Shopping */}
       <Button variant="ghost" className="w-full mt-3" asChild>
-        <Link href="/products">Continue Shopping</Link>
+        <SafeLink href="/products">Continue Shopping</SafeLink>
       </Button>
     </Card>
   );

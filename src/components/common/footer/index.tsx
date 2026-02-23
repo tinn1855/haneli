@@ -79,7 +79,10 @@ export function Footer() {
       <section className="border-t border-border/50">
         <div className="container py-8">
           <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-            <p className="text-xs font-light tracking-wide text-muted-foreground text-center md:text-left">
+            <p
+              className="text-xs font-light tracking-wide text-muted-foreground text-center md:text-left"
+              suppressHydrationWarning
+            >
               © {new Date().getFullYear()} Hanelia. All rights reserved.
             </p>
             <div className="flex items-center gap-6">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import {
@@ -79,13 +80,13 @@ export function Hero() {
                         size="lg"
                         className="rounded-none border border-white/80 bg-white/5 text-white backdrop-blur-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 font-light tracking-wide px-8"
                       >
-                        <Link
+                        <SafeLink
                           href={slide.buttonLink}
                           className="inline-flex items-center gap-2 group/btn"
                         >
                           {slide.buttonText}
                           <ArrowRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-                        </Link>
+                        </SafeLink>
                       </Button>
                     </div>
                   </div>
