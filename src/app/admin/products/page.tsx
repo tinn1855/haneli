@@ -8,11 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -41,13 +37,7 @@ import { useAdminProducts } from "@/contexts/admin-products-context";
 import { ProductFormDialog } from "@/components/admin/product-form-dialog";
 import { DeleteProductDialog } from "@/components/admin/delete-product-dialog";
 import { toast } from "sonner";
-import {
-  Plus,
-  Pencil,
-  Trash2,
-  Search,
-  RotateCcw,
-} from "lucide-react";
+import { Plus, Pencil, Trash2, Search, RotateCcw } from "lucide-react";
 import type { Product } from "@/types/product";
 
 function buildPageUrl(page: number) {
@@ -68,7 +58,7 @@ export default function AdminProductsPage() {
   const pageParam = searchParams.get("page");
   const currentPage = Math.max(
     1,
-    Math.min(parseInt(pageParam || "1", 10) || 1, 999999)
+    Math.min(parseInt(pageParam || "1", 10) || 1, 999999),
   );
 
   const [search, setSearch] = useState("");
@@ -82,7 +72,7 @@ export default function AdminProductsPage() {
 
   const categories = useMemo(
     () => Array.from(new Set(products.map((p) => p.category))).sort(),
-    [products]
+    [products],
   );
 
   const filteredProducts = useMemo(() => {
@@ -97,9 +87,7 @@ export default function AdminProductsPage() {
     });
   }, [products, search, categoryFilter]);
 
-  const totalPages = Math.ceil(
-    filteredProducts.length / itemsPerPage
-  ) || 1;
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
     return filteredProducts.slice(start, start + itemsPerPage);
@@ -116,7 +104,7 @@ export default function AdminProductsPage() {
   };
 
   const handleFormSubmit = (
-    data: Omit<Product, "id"> | (Partial<Product> & { id: string })
+    data: Omit<Product, "id"> | (Partial<Product> & { id: string }),
   ) => {
     try {
       if ("id" in data && data.id && editingProduct) {
@@ -177,9 +165,7 @@ export default function AdminProductsPage() {
 
   const toggleSelectAll = (checked: boolean | "indeterminate") => {
     if (checked === "indeterminate" || checked) {
-      setSelectedIds(
-        new Set(paginatedProducts.map((p) => p.id))
-      );
+      setSelectedIds(new Set(paginatedProducts.map((p) => p.id)));
     } else {
       setSelectedIds(new Set());
     }
@@ -249,7 +235,13 @@ export default function AdminProductsPage() {
               <TableRow>
                 <TableHead className="w-12 pr-0">
                   <Checkbox
-                    checked={isAllSelected ? true : isSomeSelected ? "indeterminate" : false}
+                    checked={
+                      isAllSelected
+                        ? true
+                        : isSomeSelected
+                          ? "indeterminate"
+                          : false
+                    }
                     onCheckedChange={toggleSelectAll}
                     aria-label="Select all"
                   />
@@ -276,7 +268,9 @@ export default function AdminProductsPage() {
                 paginatedProducts.map((product) => (
                   <TableRow
                     key={product.id}
-                    data-state={selectedIds.has(product.id) ? "selected" : undefined}
+                    data-state={
+                      selectedIds.has(product.id) ? "selected" : undefined
+                    }
                   >
                     <TableCell className="w-12 pr-0">
                       <Checkbox
@@ -355,14 +349,13 @@ export default function AdminProductsPage() {
           </Table>
 
           {filteredProducts.length > 0 && (
-            <div className="flex flex-col gap-4 border-t px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span>Items per page</span>
+            <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center justify-between ">
+              <div className="flex items-center w-full gap-2 text-sm text-muted-foreground">
                 <Select
                   value={String(itemsPerPage)}
                   onValueChange={(v) => setItemsPerPage(Number(v))}
                 >
-                  <SelectTrigger className="h-8 w-[70px]">
+                  <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -379,12 +372,12 @@ export default function AdminProductsPage() {
                         (currentPage - 1) * itemsPerPage + 1
                       }-${Math.min(
                         currentPage * itemsPerPage,
-                        filteredProducts.length
+                        filteredProducts.length,
                       )} of ${filteredProducts.length}`
                     : "0 products"}
                 </span>
               </div>
-              <Pagination>
+              <Pagination className="w-full justify-end">
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious
@@ -407,7 +400,10 @@ export default function AdminProductsPage() {
                       )
                         return true;
                       if (page === 2 && currentPage > 3) return true;
-                      if (page === totalPages - 1 && currentPage < totalPages - 2)
+                      if (
+                        page === totalPages - 1 &&
+                        currentPage < totalPages - 2
+                      )
                         return true;
                       return false;
                     })
